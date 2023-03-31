@@ -48,3 +48,34 @@ pipeline:
                     repo: jjablonski94/helloworldservergo
                     tags:
                       - <+pipeline.sequenceId>
+    - stage:
+        name: Run Integration Test
+        identifier: Run_Integration_Test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            useFromStage: Build_Test_and_Push
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: Docker Hub BS
+                  identifier: Docker_Hub_BS
+                  spec:
+                    connectorRef: jmjDockerReg
+                    image: jjablonski94/helloworldservergo:<+pipeline.sequenceId>
+                    shell: Sh
+              - step:
+                  type: Run
+                  name: Test Server Connection
+                  identifier: Test_Server_Connection
+                  spec:
+                    connectorRef: jmjDockerReg
+                    image: curlimages/curl:7.73.0
+                    shell: Sh
+                    command: |-
+                      sleep 10
+                      curl localhost:8080
+                      curl localhost:8080?Hello!_I_am_a_nice_demo!
