@@ -79,3 +79,8 @@ pipeline:
                       sleep 10
                       curl localhost:8080
                       curl localhost:8080?Hello!_I_am_a_nice_demo!
+  variables:
+    - name: commitSha
+      type: String
+      description: ""
+      value: <+trigger.commitSha>
