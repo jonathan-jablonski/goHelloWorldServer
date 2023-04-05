@@ -92,7 +92,7 @@ pipeline:
                       curl localhost:8080
                       curl localhost:8080?Hello!_I_am_a_nice_demo!
   variables:
-    - name: TAG
+    - name: dockerTag
       type: String
       description: ""
-      value: <+pipeline.properties.ci.codebase.build.build.spec.tag>
+      value: <+codebase.shortCommitSha>
