@@ -59,7 +59,6 @@ pipeline:
                     repo: jjablonski94/helloworldservergo
                     tags:
                       - <+pipeline.sequenceId>
-                      - <+pipeline.stages.Grab_Docker_Tag.variables.TAG>
     - stage:
         name: Run Integration Test
         identifier: Run_Integration_Test
