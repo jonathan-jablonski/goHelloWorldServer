@@ -40,17 +40,6 @@ pipeline:
                       gotestsum --format=standard-verbose --junitfile unit-tests.xml || true
                       CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo
               - step:
-                  type: Run
-                  name: Grab Docker Tag
-                  identifier: Grab_Docker_Tag
-                  spec:
-                    connectorRef: jmjDockerReg
-                    image: jjablonski94/helloworldservergo
-                    shell: Sh
-                    command: "export TAG=<+codebase.shortCommitSha>\r\necho $TAG"
-                    outputVariables:
-                      - name: TAG
-              - step:
                   type: BuildAndPushDockerRegistry
                   name: Build and push image to Docker Registry
                   identifier: Build_and_push_image_to_Docker_Registry
