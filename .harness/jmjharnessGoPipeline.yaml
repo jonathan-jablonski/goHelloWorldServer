@@ -48,6 +48,15 @@ pipeline:
                     repo: jjablonski94/helloworldservergo
                     tags:
                       - <+pipeline.sequenceId>
+        variables:
+          - name: commitSha
+            type: String
+            description: ""
+            value: <+pipeline.variables.webhookPayload.substring(0,5)>
+          - name: inputSha
+            type: String
+            description: ""
+            value: <+pipeline.variables.gitCommitSha.substring(0,5)>
     - stage:
         name: Run Integration Test
         identifier: Run_Integration_Test
@@ -80,7 +89,11 @@ pipeline:
                       curl localhost:8080
                       curl localhost:8080?Hello!_I_am_a_nice_demo!
   variables:
-    - name: id
+    - name: webhookPayload
       type: String
       description: ""
-      value: <+pipeline.sequenceId>
+      value: <+trigger.commitSha>
+    - name: gitCommitSha
+      type: String
+      description: ""
+      value: <+input>
