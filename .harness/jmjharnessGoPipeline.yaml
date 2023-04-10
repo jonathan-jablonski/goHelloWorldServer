@@ -55,7 +55,7 @@ pipeline:
                   identifier: Create_Github_Release
                   spec:
                     connectorRef: jmjDockerReg
-                    image: ubuntu/devel
+                    image: docker.io/jjablonski94/helloworldservergo
                     shell: Bash
                     command: |-
                       apt-get update
