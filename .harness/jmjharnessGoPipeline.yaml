@@ -164,7 +164,3 @@ pipeline:
       type: String
       description: ""
       value: <+trigger.commitSha>
-    - name: gitCommitSha
-      type: String
-      description: ""
-      value: <+input>
