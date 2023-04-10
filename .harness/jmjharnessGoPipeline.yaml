@@ -145,7 +145,7 @@ pipeline:
                     method: GET
                     headers: []
                     outputVariables: []
-                    assertion: <+httpResponseCode>
+                    assertion: <+httpResponseCode>==200
                     delegateSelectors:
                       - kubernetes-delegate-jj
                   timeout: 1m
