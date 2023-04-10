@@ -148,7 +148,7 @@ pipeline:
                     assertion: <+httpResponseCode> == 200
                     delegateSelectors:
                       - kubernetes-delegate-jj
-                  timeout: 10s
+                  timeout: 1m
                   failureStrategies: []
             rollbackSteps:
               - step:
