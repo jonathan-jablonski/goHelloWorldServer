@@ -141,11 +141,11 @@ pipeline:
                   name: HTTP Test
                   identifier: HTTP_Test
                   spec:
-                    url: https://www.google.com/healthcheck.html
+                    url: https://jsonplaceholder.typicode.com/posts/1
                     method: GET
                     headers: []
                     outputVariables: []
-                    assertion: <+execution.steps.HTTP_Test.output.httpResponseCode> == 200
+                    assertion: <+httpResponseCode> == 200
                     delegateSelectors:
                       - kubernetes-delegate-jj
                   timeout: 1m
