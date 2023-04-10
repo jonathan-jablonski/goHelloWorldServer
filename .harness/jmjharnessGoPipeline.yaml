@@ -133,6 +133,9 @@ pipeline:
                   spec:
                     skipDryRun: false
                     pruningEnabled: false
+                    delegateSelectors:
+                      - kubernetes-delegate-jj
+                  failureStrategies: []
               - step:
                   type: Http
                   name: HTTP Test
@@ -143,7 +146,10 @@ pipeline:
                     headers: []
                     outputVariables: []
                     assertion: <+httpResponseCode> == 200
+                    delegateSelectors:
+                      - kubernetes-delegate-jj
                   timeout: 10s
+                  failureStrategies: []
             rollbackSteps:
               - step:
                   name: Rollback Rollout Deployment
